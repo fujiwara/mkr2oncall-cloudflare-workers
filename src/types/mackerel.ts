@@ -1,7 +1,7 @@
 export interface MackerelWebhook {
     orgName: string;
     event: string;
-    imageURL: string;
+    imageUrl: string;
     memo: string;
     alert: MackerelAlert;
     isTestPayload(): boolean;
@@ -33,7 +33,7 @@ export const newMackerelWebhook = (v: MackerelWebhook): MackerelWebhook => {
     return {
         orgName: v.orgName || "",
         event: v.event || "",
-        imageURL: v.imageURL || "",
+        imageUrl: v.imageUrl || "",
         memo: v.memo || "",
         alert: v.alert || {
             id: "",
@@ -60,7 +60,7 @@ export const newMackerelWebhook = (v: MackerelWebhook): MackerelWebhook => {
             return {
                 alert_uid: this.alert.id,
                 title: this.getIncidentTitle(),
-                image_url: this.imageURL,
+                image_url: this.imageUrl,
                 state: this.alert.isOpen ? "alerting" : "ok",
                 link_to_upstream_details: this.alert.url,
                 message: this.memo,
