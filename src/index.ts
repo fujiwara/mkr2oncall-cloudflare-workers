@@ -14,6 +14,8 @@ type Bindings = {
 }
 
 import { Hono } from 'hono'
+import { logger } from 'hono/logger'
+
 import {
 	MackerelWebhook,
 	newMackerelWebhook,
@@ -22,6 +24,7 @@ import {
 } from './types/mackerel'
 const app = new Hono<{ Bindings: Bindings }>()
 
+app.use('*', logger())
 app.post('/', async (c) => {
 	const hook = newMackerelWebhook(await c.req.json<MackerelWebhook>())
 	console.log(`[info] received webhook: ${JSON.stringify(hook)}`)
