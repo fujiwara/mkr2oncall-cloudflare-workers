@@ -56,6 +56,7 @@ app.post('/', async (c) => {
 })
 
 app.get('/health', async (c) => {
+	console.log(`[info] health check from ${c.req.headers.get('cf-Connecting-ip')} ${c.req.headers.get('user-agent')}`)
 	return c.json({ status: 'OK' }, 200)
 })
 
