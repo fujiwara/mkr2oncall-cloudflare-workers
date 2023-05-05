@@ -1,0 +1,7 @@
+compatibility_date = "2023-05-05"
+main = "src/index.ts"
+name = "mkr2oncall-cloudflare-workers"
+
+[env.production.vars]
+CRITICAL_ONLY = false
+# ONCALL_URL must be set by secrets. you can `wrangler secret put ONCALL_URL`
